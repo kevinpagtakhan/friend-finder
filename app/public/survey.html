@@ -184,16 +184,29 @@
 					var friendInput = {
 						name: $("#name").val(),
 						photo: $("#photo").val(),
-						scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
-	           }
+						scores: [
+							$("#q1").val(),
+							$("#q2").val(),
+							$("#q3").val(),
+							$("#q4").val(),
+							$("#q5").val(),
+							$("#q6").val(),
+							$("#q7").val(),
+							$("#q8").val(),
+							$("#q9").val(),
+							$("#q10").val()
+						]
+	        }
 			   // AJAX Post will be needed for the URL
-			   var currentURL = window.location.origin;
+				 var url = 'http://localhost:3000'
 			   // Created AJAX Post for the Friend Object Information
-			   $.post(URL + "/api/friends", friendInput + function(data){
-				    $("#matchName").text(data.name);
-			   		$("matchPhoto").attr("src", data.photo);
-					// modal match
-					$("#resultModal").modal("toggle");
+			   $.post(url + "/api/friends", friendInput)
+				 	.then(function(data){
+				    // $("#matchName").text(data.name);
+						// 		$("matchPhoto").attr("src", data.photo);
+						// // modal match
+						// $("#resultModal").modal("toggle");
+						console.log(data);
 			   });
 				} else {
 					alert("You have missing information, please fill out all fields.");
